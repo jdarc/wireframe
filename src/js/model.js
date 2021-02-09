@@ -1,10 +1,10 @@
 import Glu from "./glu";
 
-import wireVsSource from "../glsl/wireframe-vs.glsl";
-import wireFsSource from "../glsl/wireframe-fs.glsl";
+import vertexSource from "../glsl/wireframe-vs.glsl";
+import fragmentSource from "../glsl/wireframe-fs.glsl";
 
 export default (gl, data) => {
-    const program = Glu.createProgramFromSource(gl, wireVsSource, wireFsSource);
+    const program = Glu.createProgramFromSource(gl, vertexSource, fragmentSource);
     const attributes = Glu.extractAttributeLocations(gl, program);
     const uniforms = Glu.extractUniformLocations(gl, program);
 

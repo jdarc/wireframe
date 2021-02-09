@@ -9,7 +9,13 @@ export default async (filename) => {
             const v0 = vertices[parts[0] - 1];
             const v1 = vertices[parts[1] - 1];
             const v2 = vertices[parts[2] - 1];
-            buffer.push(v0.x, v0.y, v0.z, 1, 0, 0, v1.x, v1.y, v1.z, 0, 1, 0, v2.x, v2.y, v2.z, 0, 0, 1);
+            if (parts.length === 3) {
+                buffer.push(v0.x, v0.y, v0.z, 1, 0, 0, v1.x, v1.y, v1.z, 0, 1, 0, v2.x, v2.y, v2.z, 0, 0, 1);
+            } else {
+                const v3 = vertices[parts[3] - 1];
+                buffer.push(v0.x, v0.y, v0.z, 1, 0, 0, v1.x, v1.y, v1.z, 0, 1, 0, v2.x, v2.y, v2.z, 0, 1, 1);
+                buffer.push(v2.x, v2.y, v2.z, 0, 1, 0, v3.x, v3.y, v3.z, 0, 0, 1, v0.x, v0.y, v0.z, 1, 0, 1);
+            }
         }
     });
     return buffer;
